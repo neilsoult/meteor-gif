@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
+    "prestart": "meteor npm install",
     "pretest": "npm run lint --silent",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "meteor",
+    "test": "meteor test-packages ./packages/meteor-gifmaker --driver-package practicalmeteor:mocha"
   },
   "repository": {
     "type": "git",
