@@ -1,7 +1,7 @@
 {
   "name": "meteor-gif",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample app",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -20,5 +20,19 @@
   "eslintConfig": {
     "extends": "@meteorjs/eslint-config-meteor"
   },
-  "homepage": "https://github.com/neilsoult/meteor-gif"
+  "homepage": "https://github.com/neilsoult/meteor-gif",
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-meteor": "^4.1.4",
+    "eslint-plugin-react": "^7.4.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "gifshot": "^0.3.2"
+  }
 }

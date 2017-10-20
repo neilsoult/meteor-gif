@@ -3,7 +3,7 @@
     <header>
         <h1>Gif Maker Test</h1>
     </header>
-    <div>
+    <form>
         <div>
             <div id="dropDiv" ondrop="" ondragover=""><span>Drag and <em>Drop</em> here</span></div>
             <br>
@@ -25,13 +25,18 @@
         </div>
         <br>
         <div>
-            <input type="number" placeholder="milliseconds" />
+            <input name="ms" type="number" placeholder="milliseconds" />
         </div>
         <br>
         <div>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
         </div>
-    </div>
+    </form>
+</div>
+<div class="result dn">
+    <button class="reset">Make another gif</button>
+    <img />
+    <a download="custom.gif">Save this gif to your computer</a>
 </div>
 </body>
 <template name="gifmaker">
