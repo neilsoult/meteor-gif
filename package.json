@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "prestart": "meteor npm install",
-    "pretest": "npm i && gnpm run lint --silent",
+    "pretest": "npm i && npm run lint --silent",
     "start": "meteor",
     "test": "meteor test-packages ./packages/meteor-gifmaker --driver-package practicalmeteor:mocha"
   },
