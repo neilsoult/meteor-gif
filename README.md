@@ -1,5 +1,6 @@
 # meteor-gif
 REQUIRES METEOR
+
 install meteor on your platform before attempting the instructions below
 
 to run package tests:
