@@ -66,7 +66,7 @@ Template.gifmaker.events({
     'drop #dropzone': (event, templateInstance) => {
         event.preventDefault();
         _.each(event.originalEvent.dataTransfer.files, (file, idx) => {
-            if (idx < 5 && templateInstance.files.length < 5) {
+            if (idx < 5 && templateInstance.view.template.files.length < 5) {
                 Meteor.saveFile(file, handlerFactory(templateInstance), errorHandler);
             }
         });
