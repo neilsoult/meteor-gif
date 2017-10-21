@@ -3,6 +3,8 @@ import gifshot from 'gifshot';
 let resetPage = () => {
     $('.container').removeClass('dn');
     $('.result').addClass('dn');
+    $('.readyToCreate').hide();
+    $('#dropzone, #label1').show();
     $('form')[0].reset();
     $('.preview').empty();
 };
@@ -60,8 +62,10 @@ Template.gifmaker.events({
     },
     'drop #dropzone': (event, templateInstance) => {
         event.preventDefault();
-        _.each(event.originalEvent.dataTransfer.files, (file) => {
-            Meteor.saveFile(file, handlerFactory(templateInstance), errorHandler);
+        _.each(event.originalEvent.dataTransfer.files, (file, idx) => {
+            if (idx < 5 && templateInstance.files.length < 5) {
+                Meteor.saveFile(file, handlerFactory(templateInstance), errorHandler);
+            }
         });
     }
 });
@@ -94,9 +98,8 @@ Template.gifmaker.onCreated(function () {
         $('#dropzone label').hide();
         $(`#label${activeIdx}`).show();
         $('.readyToCreate')[(activeIdx > 2 ? 'show' : 'hide')]();
+        if (activeIdx > 5) {
+            $('#dropzone').hide();
+        }
     }
-});
-
-Template.gifmaker.onRendered(function () {
-    this.updateTemplateView();
 });

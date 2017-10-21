@@ -60,6 +60,9 @@ button {
     font-size: 22px;
     margin-top: 12px;
 }
+.readyToCreate .reset {
+    font-size: 16px;
+}
 .dn {
     display: none;
 }
