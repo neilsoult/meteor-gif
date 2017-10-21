@@ -11,7 +11,7 @@ Template.body.onRendered(() => {
     resetPage();
     let $dropzone = $('#dropzone');
     // handle these events in jQuery because blaze is laborious
-    $dropzone.on('drag dragstart dragend dragover dragenter dragleave drop', (e) => {
+    $dropzone.on('drag dragstart dragend dragover dragenter dragleave', (e) => {
         e.preventDefault();
         e.stopPropagation();
     })
@@ -45,7 +45,7 @@ Template.body.onRendered(() => {
 
 let handlerFactory = (instance) => {
     return (img) => {
-        instance.files[event.target.name] = img;
+        instance.files.push(img);
         $('.preview').append(img);
         instance.updateTemplateView();
     };
@@ -59,6 +59,7 @@ Template.gifmaker.events({
         Meteor.saveFile(file, handlerFactory(templateInstance), errorHandler);
     },
     'drop #dropzone': (event, templateInstance) => {
+        event.preventDefault();
         _.each(event.originalEvent.dataTransfer.files, (file) => {
             Meteor.saveFile(file, handlerFactory(templateInstance), errorHandler);
         });
@@ -86,10 +87,10 @@ Template.gifmaker.helpers({
 });
 
 Template.gifmaker.onCreated(function () {
-    this.files = {};
+    this.files = [];
     this.updateTemplateView = () => {
         // my hacky attempt to simulate 2-way data binding in blaze
-        let activeIdx = Object.keys(this.files).length + 1;
+        let activeIdx = this.files.length + 1;
         $('#dropzone label').hide();
         $(`#label${activeIdx}`).show();
         $('.readyToCreate')[(activeIdx > 2 ? 'show' : 'hide')]();
