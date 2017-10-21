@@ -11,8 +11,5 @@
     },
     "plugins": [
       "meteor"
-    ],
-    "rules": {
-        "no-console": 0
-    }
+    ]
 }
