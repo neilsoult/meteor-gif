@@ -1,11 +1,72 @@
-#dropDiv {
-    border: 1px solid black;
-    height: 200px;
-    width: 500px;
+body {
+    background: #333;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
-.dragging {
+.container, .result {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 5%;
+    width: 90%
+}
+header {
+    text-align: center;
+    text-transform: uppercase;
+}
+button {
+    border-radius: 5px;
+    padding: 6px;
+}
+#dropzone {
+    background: #666;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 100px 0;
+    text-align: center;
+    width: 100%;
+}
+#dropzone h2 {
+    font-size: 28px;
+    margin: 0;
+}
+#dropzone label {
+    cursor: pointer;
+    display: none;
+    text-decoration: underline;
+}
+#dropzone.dragging {
     background: #999;
+    color: #333;
+}
+.preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.preview img {
+    height: 64px;
+    margin: 4px;
+}
+.readyToCreate {
+    margin: 10px 0;
+    text-align: center;
+}
+.readyToCreate input {
+    display: block;
+    margin: 4px auto;
+}
+.readyToCreate button {
+    font-size: 22px;
+    margin-top: 12px;
 }
 .dn {
     display: none;
+}
+.result a {
+    text-decoration: none;
+}
+.result img, .result button {
+    display: block;
+    margin: 10px auto
 }

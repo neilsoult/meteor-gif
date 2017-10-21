@@ -12,28 +12,24 @@ describe('save_file', function () {
         stub.restore();
     });
 
-    it('must run tests', function () {
-        console.log('test', Meteor);
-        return true;
-    });
-
     it('returns an error if fileType is wrong', function () {
 
         let message = 'Invalid file type.';
         let callback = sinon.spy();
         chai.assert.equal(Meteor.saveFile({type: 'badType'}), message);
-        Meteor.saveFile({type: 'badType'}, callback);
+        Meteor.saveFile({type: 'badType'}, null, callback);
         chai.assert(callback.calledWith(message));
 
     });
 
-    it('saves the image file', function () {
+    it('returns the image file to the success handler', function () {
 
         let file = { name: 'sample', target: { result: 'imgsrc' }, type: 'image/png' };
-        Meteor.saveFile(file);
-        let files = Meteor.getFiles();
-        console.log(files.sample);
-        chai.assert.equal($(files.sample).attr('src'), 'imgsrc');
+        let callback = sinon.spy();
+        Meteor.saveFile(file, callback);
+        chai.assert(callback.called);
+        let $el = $(callback.args[0][0]);
+        chai.assert.equal($el.attr('src'), 'imgsrc');
 
     });
 

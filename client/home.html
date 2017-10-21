@@ -1,44 +1,35 @@
+<head><title>Make a gif!</title></head>
 <body>
-<div class="container">
-    <header>
-        <h1>Gif Maker Test</h1>
-    </header>
-    <form>
-        <div>
-            <div id="dropDiv" ondrop="" ondragover=""><span>Drag and <em>Drop</em> here</span></div>
-            <br>
-        </div>
-        <div>
-            1.&nbsp;{{> gifmaker }}
-        </div>
-        <div>
-            2.&nbsp;{{> gifmaker }}
-        </div>
-        <div>
-            3.&nbsp;{{> gifmaker }}
-        </div>
-        <div>
-            4.&nbsp;{{> gifmaker }}
-        </div>
-        <div>
-            5.&nbsp;{{> gifmaker }}
-        </div>
-        <br>
-        <div>
-            <input name="ms" type="number" placeholder="milliseconds" />
-        </div>
-        <br>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-</div>
-<div class="result dn">
-    <button class="reset">Make another gif</button>
-    <img />
-    <a download="custom.gif">Save this gif to your computer</a>
-</div>
+    <div class="container">
+        <header>
+            <h1>Gif Maker</h1>
+        </header>
+        <form>
+            {{> gifmaker}}
+            <div class="preview"></div>
+            <div class="readyToCreate dn">
+                <div>
+                    <span>Enter the delay you want between images:</span>
+                    <input name="ms" type="number" placeholder="milliseconds" value="100" />
+                </div>
+                <button type="submit">Make a gif!</button>
+            </div>
+        </form>
+    </div>
+    <div class="result dn">
+        <img />
+        <a download="custom.gif"><button>Save this gif to your computer</button></a>
+        <button class="reset">Make another gif</button>
+    </div>
 </body>
 <template name="gifmaker">
-    <input type=file />
+    <div id="dropzone">
+        <h2>Drag and <em>Drop</em> here</h2>
+            {{#each idx in arr}}
+            <div>
+                <label {{ labelAttributes idx }}>Or click here to choose a file</label>
+                <input {{ inputAttributes idx }} />
+            </div>
+        {{/each}}
+    </div>
 </template>
