@@ -8,11 +8,12 @@ body {
     margin: 0 auto;
     max-width: 800px;
     padding: 0 5%;
+    text-align: center;
     width: 90%
 }
 header {
-    text-align: center;
-    text-transform: uppercase;
+/*     text-align: center;
+ */    text-transform: uppercase;
 }
 button {
     border-radius: 5px;
@@ -23,8 +24,8 @@ button {
     border: 1px solid #999;
     border-radius: 10px;
     padding: 100px 0;
-    text-align: center;
-    width: 100%;
+/*     text-align: center;
+ */    width: 100%;
 }
 #dropzone h2 {
     font-size: 28px;
@@ -50,8 +51,8 @@ button {
 }
 .readyToCreate {
     margin: 10px 0;
-    text-align: center;
-}
+/*     text-align: center;
+ */}
 .readyToCreate input {
     display: block;
     margin: 4px auto;
@@ -60,7 +61,8 @@ button {
     font-size: 22px;
     margin-top: 12px;
 }
-.readyToCreate .reset {
+#clear {
+    display: none;
     font-size: 16px;
 }
 .dn {

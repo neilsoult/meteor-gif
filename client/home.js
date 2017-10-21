@@ -1,12 +1,15 @@
 import gifshot from 'gifshot';
 
 let resetPage = () => {
+    Template.gifmaker.files = [];
     $('.container').removeClass('dn');
     $('.result').addClass('dn');
     $('.readyToCreate').hide();
+    $('#dropzone label').hide();
     $('#dropzone, #label1').show();
     $('form')[0].reset();
     $('.preview').empty();
+    $('#clear').hide();
 };
 
 Template.body.onRendered(() => {
@@ -47,7 +50,7 @@ Template.body.onRendered(() => {
 
 let handlerFactory = (instance) => {
     return (img) => {
-        instance.files.push(img);
+        instance.view.template.files.push(img);
         $('.preview').append(img);
         instance.updateTemplateView();
     };
@@ -90,13 +93,15 @@ Template.gifmaker.helpers({
     }
 });
 
+Template.gifmaker.files = [];
+
 Template.gifmaker.onCreated(function () {
-    this.files = [];
     this.updateTemplateView = () => {
         // my hacky attempt to simulate 2-way data binding in blaze
-        let activeIdx = this.files.length + 1;
+        let activeIdx = this.view.template.files.length + 1;
         $('#dropzone label').hide();
         $(`#label${activeIdx}`).show();
+        $('#clear')[activeIdx > 1 ? 'show' : 'hide']();
         $('.readyToCreate')[(activeIdx > 2 ? 'show' : 'hide')]();
         if (activeIdx > 5) {
             $('#dropzone').hide();
